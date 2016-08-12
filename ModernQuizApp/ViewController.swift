@@ -17,15 +17,19 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var Buttons: [UIButton]!
-    @IBOutlet weak var qLeft: UILabel!
-    @IBOutlet weak var streakInt: UILabel!
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var wrongLabel: UILabel!
+
+    
     var Questions = [Question]()
     
     var QNumber = Int()
     
     var AnswerNumber = Int()
     
-    var Score = Int()
+    var correct = Int()
+    
+    var wrong = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,14 +64,11 @@ class ViewController: UIViewController {
             Questions.removeAtIndex(QNumber)
         } else {
             NSLog("Questions Finsished!")
-            NSLog("Your final score was \(Score) questions right!")
         }
-        
-        qLeft.text = "\(Questions.count)"
     }
     
     func showEndAlert() {
-        let alertController = UIAlertController(title: "You Did It!", message: "You completed the quiz with a final score of \(Score)!", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "You Did It!", message: "You completed the quiz with \(correct) correct and \(wrong) wrong!", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Restart", style: .Default, handler: nil)
         alertController.addAction(action)
         presentViewController(alertController, animated: true, completion: nil)
@@ -86,8 +87,8 @@ class ViewController: UIViewController {
         alertController.addAction(action)
         presentViewController(alertController, animated: true, completion: nil)
         randomQueston()
-        Score += 1
-        streakInt.text = "\(Score)"
+        correct += 1
+        correctLabel.text = "\(correct)"
     }
     
     func wrongAnswer() {
@@ -97,9 +98,9 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
         NSLog("Question Was Answered Wrong!")
         randomQueston()
-        Score = 0
-        streakInt.text = "\(Score)"
         isEnd()
+        wrong += 1
+        wrongLabel.text = "\(wrong)"
     }
     
     @IBAction func yes(sender: AnyObject) {
@@ -110,13 +111,14 @@ class ViewController: UIViewController {
         }
 
     }
-
+    
     @IBAction func no(sender: AnyObject) {
         if AnswerNumber == 1 {
             rightAnswer()
         } else {
-            rightAnswer()
+            wrongAnswer()
         }
 
     }
+    
 }
