@@ -15,11 +15,10 @@ struct Question {
 
 class ViewController: UIViewController {
     
-//    @IBOutlet var Buttons: [UIButton]!
-//    @IBOutlet weak var questionLabel: UILabel!
-    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var Buttons: [UIButton]!
+    @IBOutlet weak var qLeft: UILabel!
+    @IBOutlet weak var streakInt: UILabel!
     var Questions = [Question]()
     
     var QNumber = Int()
@@ -63,6 +62,23 @@ class ViewController: UIViewController {
             NSLog("Questions Finsished!")
             NSLog("Your final score was \(Score) questions right!")
         }
+        
+        qLeft.text = "\(Questions.count + 1)"
+    }
+    
+    func showEndAlert() {
+        let alertController = UIAlertController(title: "You Did It!", message: "You completed the quiz with a final score of \(streakInt)!", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Restart", style: .Default, handler: nil)
+        alertController.addAction(action)
+        presentViewController(alertController, animated: true, completion: nil)
+        
+
+    }
+    
+    func isEnd() {
+        if Questions.count == 0 {
+            showEndAlert()
+        }
     }
     
     func rightAnswer() {
@@ -72,6 +88,7 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
         randomQueston()
         Score += 1
+        streakInt.text = "\(Score)"
     }
     
     func wrongAnswer() {
@@ -81,6 +98,8 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
         NSLog("Question Was Answered Wrong!")
         randomQueston()
+        Score = 0
+        streakInt.text = "\(Score)"
     }
     
     @IBAction func yes(sender: AnyObject) {
