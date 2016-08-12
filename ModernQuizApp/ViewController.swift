@@ -63,16 +63,14 @@ class ViewController: UIViewController {
             NSLog("Your final score was \(Score) questions right!")
         }
         
-        qLeft.text = "\(Questions.count + 1)"
+        qLeft.text = "\(Questions.count)"
     }
     
     func showEndAlert() {
-        let alertController = UIAlertController(title: "You Did It!", message: "You completed the quiz with a final score of \(streakInt)!", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "You Did It!", message: "You completed the quiz with a final score of \(Score)!", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Restart", style: .Default, handler: nil)
         alertController.addAction(action)
         presentViewController(alertController, animated: true, completion: nil)
-        
-
     }
     
     func isEnd() {
@@ -82,6 +80,7 @@ class ViewController: UIViewController {
     }
     
     func rightAnswer() {
+        isEnd()
         let alertController = UIAlertController(title: "Correct!", message: "The Question You Answered is Correct!", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Next", style: .Default, handler: nil)
         alertController.addAction(action)
@@ -100,6 +99,7 @@ class ViewController: UIViewController {
         randomQueston()
         Score = 0
         streakInt.text = "\(Score)"
+        isEnd()
     }
     
     @IBAction func yes(sender: AnyObject) {
