@@ -107,24 +107,24 @@ class ViewController: UIViewController {
     }
     
     func rightAnswer() {
+        correct += 1
+        correctLabel.text = "\(correct)"
         isEnd()
             let alertController = UIAlertController(title: "Correct", message: "You got it right!", preferredStyle: .Alert)
             let action = UIAlertAction(title: "Next", style: .Default, handler: nil)
                 alertController.addAction(action)
                 presentViewController(alertController, animated: true, completion: nil)
-        correct += 1
-        correctLabel.text = "\(correct)"
         randomQueston()
     }
     
     func wrongAnswer() {
+        wrong += 1
+        wrongLabel.text = "\(wrong)"
         isEnd()
             let alertController = UIAlertController(title: "Wrong", message: "You got it wrong!", preferredStyle: .Alert)
             let action = UIAlertAction(title: "Next", style: .Default, handler: nil)
                 alertController.addAction(action)
                 presentViewController(alertController, animated: true, completion: nil)
-        wrong += 1
-        wrongLabel.text = "\(wrong)"
         randomQueston()
     }
     
