@@ -12,6 +12,7 @@
 		CEC3178A1D5D200700D10F44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC317881D5D200700D10F44 /* Main.storyboard */; };
 		CEC3178C1D5D200700D10F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC3178B1D5D200700D10F44 /* Assets.xcassets */; };
 		CEC3178F1D5D200700D10F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC3178D1D5D200700D10F44 /* LaunchScreen.storyboard */; };
+		CEE7A6EE1D5F75CC0032F4C3 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7A6ED1D5F75CC0032F4C3 /* MainScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CEC3178B1D5D200700D10F44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC3178E1D5D200700D10F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEC317901D5D200700D10F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEE7A6ED1D5F75CC0032F4C3 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				CEC317841D5D200700D10F44 /* AppDelegate.swift */,
 				CEC317861D5D200700D10F44 /* ViewController.swift */,
+				CEE7A6ED1D5F75CC0032F4C3 /* MainScreenViewController.swift */,
 				CEC317881D5D200700D10F44 /* Main.storyboard */,
 				CEC3178B1D5D200700D10F44 /* Assets.xcassets */,
 				CEC3178D1D5D200700D10F44 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				CEC317871D5D200700D10F44 /* ViewController.swift in Sources */,
 				CEC317851D5D200700D10F44 /* AppDelegate.swift in Sources */,
+				CEE7A6EE1D5F75CC0032F4C3 /* MainScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +290,7 @@
 				CEC317951D5D200700D10F44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
