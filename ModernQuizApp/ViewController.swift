@@ -100,9 +100,10 @@ class ViewController: UIViewController {
     func showEndAlert() {
         let alertController = UIAlertController(title: "Questions Completed!", message: "You completed the quiz with \(correct) correct and \(wrong) wrong. Click restart to retry the quiz.", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Restart", style: .Default, handler: nil)
+        let action2 = UIAlertAction(title: "Next Level", style: .Default, handler: nil)
         alertController.addAction(action)
+        alertController.addAction(action2)
         presentViewController(alertController, animated: true, completion: nil)
-        restart()
         randomQueston()
         
     }
