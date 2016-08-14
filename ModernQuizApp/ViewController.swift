@@ -34,10 +34,10 @@ class ViewController: UIViewController {
     
     struct alternateQuestions {
         static var alternateQuestion = [
+            Question(Question: "Start No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
-            Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
-            Question(Question: "Yes", Answers: ["Yes","No"], Answer: 0)
+            Question(Question: "End Yes", Answers: ["Yes","No"], Answer: 0)
         ]}
     
     var questNum = alternateQuestions.alternateQuestion.count - 1
@@ -48,10 +48,10 @@ class ViewController: UIViewController {
 
         
         Questions = [
+            Question(Question: "Start No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
-            Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
-            Question(Question: "Yes", Answers: ["Yes","No"], Answer: 0)
+            Question(Question: "End Yes", Answers: ["Yes","No"], Answer: 0)
         ]
         
         randomQueston()
@@ -104,6 +104,7 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
         restart()
         randomQueston()
+        
     }
     
     func rightAnswer() {
