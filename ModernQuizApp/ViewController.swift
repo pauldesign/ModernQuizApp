@@ -33,14 +33,29 @@ class ViewController: UIViewController {
     var wrong = Int()
     
     struct alternateQuestions {
-        static var alternateQuestion = [
+        static var lv1 = [
             Question(Question: "Start No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "No", Answers: ["Yes","No"], Answer: 1),
             Question(Question: "End Yes", Answers: ["Yes","No"], Answer: 0)
-        ]}
+        ]
+        static var lv2 = [
+            Question(Question: "Start No2", Answers: ["Yes","No"], Answer: 1),
+            Question(Question: "No2", Answers: ["Yes","No"], Answer: 1),
+            Question(Question: "No2", Answers: ["Yes","No"], Answer: 1),
+            Question(Question: "End Yes2", Answers: ["Yes","No"], Answer: 0)
+        ]
+        static var lv3 = [
+            Question(Question: "Start No3", Answers: ["Yes","No"], Answer: 1),
+            Question(Question: "No3", Answers: ["Yes","No"], Answer: 1),
+            Question(Question: "No3", Answers: ["Yes","No"], Answer: 1),
+            Question(Question: "End Yes3", Answers: ["Yes","No"], Answer: 0)
+        ]
+    }
     
-    var questNum = alternateQuestions.alternateQuestion.count - 1
+    var lv1questNum = alternateQuestions.lv1.count - 1
+    var lv2questNum = alternateQuestions.lv2.count - 1
+    var lv3questNum = alternateQuestions.lv3.count - 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +71,7 @@ class ViewController: UIViewController {
         
         randomQueston()
         
-        print(questNum)
+        print(lv1questNum)
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,26 +96,85 @@ class ViewController: UIViewController {
         }
     }
     
-    func restart() {
-        for i in 0...questNum {
-            Questions.append(alternateQuestions.alternateQuestion[i])
-        }
+    func restartScore() {
         correct = 0
         wrong = 0
         correctLabel.text = "\(correct)"
         wrongLabel.text = "\(wrong)"
     }
     
+    func restartlv1() {
+        for i in 0...lv1questNum {
+            Questions.append(alternateQuestions.lv1[i])
+        }
+        restartScore()
+    }
+    func restartlv2() {
+        for i in 0...lv2questNum {
+            Questions.append(alternateQuestions.lv2[i])
+        }
+        restartScore()
+    }
+    func restartlv3() {
+        for i in 0...lv2questNum {
+            Questions.append(alternateQuestions.lv3[i])
+        }
+        restartScore()
+    }
+    
     func isEnd() {
         if Questions.count == 0 {
-            showEndAlert()
+            showEndAlertlv1()
         }
     }
     
-    func showEndAlert() {
+    func exit(Sender: UIButton!) {
+        let mainVC: MainScreenViewController = MainScreenViewController(nibName: nil, bundle: nil)
+        
+        self.presentViewController(mainVC, animated: true, completion: nil)
+        
+    }
+    
+    func showEndAlertlv1() {
         let alertController = UIAlertController(title: "Questions Completed!", message: "You completed the quiz with \(correct) correct and \(wrong) wrong. Click restart to retry the quiz.", preferredStyle: .Alert)
-        let action = UIAlertAction(title: "Restart", style: .Default, handler: nil)
-        let action2 = UIAlertAction(title: "Next Level", style: .Default, handler: nil)
+        let action = UIAlertAction(title: "Restart", style: .Default) {
+            UIAlertAction in
+            self.restartlv1()
+        }
+        let action2 = UIAlertAction(title: "Next Level", style: .Default) {
+            UIAlertAction in
+            self.restartlv2()
+        }
+        alertController.addAction(action)
+        alertController.addAction(action2)
+        presentViewController(alertController, animated: true, completion: nil)
+        randomQueston()
+    }
+    func showEndAlertlv2() {
+        let alertController = UIAlertController(title: "Questions Completed!", message: "You completed the quiz with \(correct) correct and \(wrong) wrong. Click restart to retry the quiz.", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Restart", style: .Default) {
+            UIAlertAction in
+            self.restartlv2()
+        }
+        let action2 = UIAlertAction(title: "Next Level", style: .Default) {
+            UIAlertAction in
+            self.restartlv3()
+        }
+        alertController.addAction(action)
+        alertController.addAction(action2)
+        presentViewController(alertController, animated: true, completion: nil)
+        randomQueston()
+    }
+    func showEndAlertlv3() {
+        let alertController = UIAlertController(title: "Questions Completed!", message: "You completed the quiz with \(correct) correct and \(wrong) wrong. Click restart to retry the quiz.", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Restart", style: .Default) {
+            UIAlertAction in
+            self.restartlv3()
+        }
+        let action2 = UIAlertAction(title: "Exit", style: .Default) {
+            UIAlertAction in
+            self.exit(.None)
+        }
         alertController.addAction(action)
         alertController.addAction(action2)
         presentViewController(alertController, animated: true, completion: nil)
