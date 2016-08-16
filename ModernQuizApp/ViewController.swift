@@ -128,6 +128,18 @@ class ViewController: UIViewController {
         }
     }
     
+    func isEnd2() {
+        if Questions.count == 0 {
+            showEndAlertlv2()
+        }
+    }
+    
+    func isEnd3() {
+        if Questions.count == 0 {
+            showEndAlertlv3()
+        }
+    }
+    
     func exit(Sender: UIButton!) {
         let mainVC: MainScreenViewController = MainScreenViewController(nibName: nil, bundle: nil)
         
